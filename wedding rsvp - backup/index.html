@@ -42,12 +42,14 @@
       }
 
       .page {
-        max-width: 980px;
+        max-width: 890px;
         margin: 0 auto;
         padding: 32px 24px 48px;
       }
 
       .hero {
+        height: 650px;
+        display: flex;
         position: relative;
         overflow: hidden;
         isolation: isolate;
@@ -123,16 +125,16 @@
 
       .hero-heading {
         font-family: var(--font-sans);
-        font-size: 0.72rem;
+        font-size: 1.5rem;
         letter-spacing: 0.34em;
         text-transform: uppercase;
         color: var(--accent-gold);
-        font-weight: 600;
+        font-weight: 500;
         margin-bottom: 16px;
       }
 
       .hero-subtitle {
-        font-size: 0.94rem;
+        font-size: 1.5rem;
         color: var(--text-muted);
         margin-bottom: 6px;
       }
@@ -141,7 +143,7 @@
         font-family: var(--font-script);
         font-size: clamp(2.8rem, 5.8vw, 4.4rem);
         letter-spacing: 0.12em;
-        font-weight: 400;
+        font-weight: 300;
         color: var(--accent-emerald);
         margin-bottom: 16px;
       }
@@ -149,12 +151,12 @@
       .hero-copy {
         max-width: 620px;
         margin: 0 auto 16px;
-        font-size: 1rem;
+        font-size: 1.5rem;
         color: var(--text-muted);
       }
 
       .hero-date {
-        font-size: 1.08rem;
+        font-size: 1.5rem;
         font-weight: 600;
         color: var(--text-primary);
         letter-spacing: 0.04em;
@@ -167,18 +169,18 @@
       .section-heading {
         text-align: center;
         font-family: var(--font-sans);
-        font-size: 1.35rem;
+        font-size: 1.6rem;
         letter-spacing: 0.24em;
         text-transform: uppercase;
         color: var(--accent-emerald);
         margin-bottom: 24px;
-        font-weight: 600;
+        font-weight: 200;
       }
 
       .section-heading::after {
         content: "";
         display: block;
-        width: 72px;
+        width: 92px;
         height: 1px;
         background: linear-gradient(
           90deg,
@@ -206,7 +208,7 @@
       }
 
       .location-wrap {
-        grid-template-columns: 1.2fr 1fr;
+        grid-template-columns: 1.4fr 1fr;
         align-items: start;
         gap: 24px;
       }
@@ -304,7 +306,7 @@
       }
 
       .timeline-card h3 {
-        font-size: 1.12rem;
+        font-size: 0.8rem;
         color: var(--accent-emerald);
       }
 
@@ -347,8 +349,8 @@
         color: #fff;
         background-color: var(--accent-emerald);
         text-decoration: none;
-        font-size: 0.85rem;
-        font-weight: 700;
+        font-size: 0.66rem;
+        font-weight: 300;
         letter-spacing: 0.18em;
         text-transform: uppercase;
         padding: 10px 16px;
@@ -410,7 +412,7 @@
 
       label,
       .attendance legend {
-        font-size: 1rem;
+        font-size: 0.9rem;
         letter-spacing: 0.18em;
         color: var(--text-muted);
         text-transform: uppercase;
@@ -713,6 +715,7 @@
 
       @media (max-width: 900px) {
         .hero {
+          height: 420px;
           padding: 72px 20px 64px;
         }
 
@@ -815,6 +818,12 @@
         .hero-heading {
           font-size: 0.66rem;
           letter-spacing: 0.24em;
+        }
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+        .hero-copy {
+          font-size: 1rem;
         }
 
         .hero-names {
@@ -1064,7 +1073,7 @@
 
           <div class="notes">
             <p>Gifts in monetary form will be appreciated.</p>
-            <p>For queries, please reach out to; +260 965080716</p>
+            <p>For queries, please reach out to; +260965080726</p>
           </div>
         </div>
       </section>
@@ -1111,7 +1120,7 @@
       </section>
 
       <footer class="footer">
-        <p>© 2026 Chibuta &amp; Constance. All rights reserved.</p>
+        <p>© 2026 C &amp; C. All rights reserved.</p>
         <div class="footer-links">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms &amp; Conditions</a>
