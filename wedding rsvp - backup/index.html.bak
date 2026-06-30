@@ -1,0 +1,1289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chibuta & Constance's Wedding Invitation</title>
+    <!-- Edit the date below to change the wedding countdown and hero date -->
+    <meta name="date" content="2026-11-28T00:00:00" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap");
+
+      :root {
+        --bg-base: #f7efe2;
+        --bg-surface: #fffdf8;
+        --text-primary: #1f1f1f;
+        --text-muted: #5f3b04;
+        --text-light: #8b7e6a;
+        --accent-emerald: #4d6b4d;
+        --accent-gold: #b68a2b;
+        --accent-gold-soft: #f4e5bf;
+        --border-subtle: #e8dfcf;
+        --font-serif: "Cormorant Garamond", serif;
+        --font-sans: "Montserrat", sans-serif;
+        --font-script: "Parisienne", cursive;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-serif);
+        background: var(--bg-base);
+        color: var(--text-primary);
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      .serif-font {
+        font-family: var(--font-serif);
+      }
+
+      .page {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 32px 24px 48px;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        text-align: center;
+        padding: 96px 24px 80px;
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        box-shadow: 0 16px 40px rgba(31, 31, 31, 0.08);
+      }
+
+      .hero-slides {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+      }
+
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        background-position: center;
+        background-size: cover;
+        opacity: 0;
+        animation: heroFade 12s infinite;
+      }
+
+      .hero-slide--1 {
+        background-image:
+          linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.86),
+            rgba(244, 229, 191, 0.76)
+          ),
+          url("images/groom.jpg");
+        animation-delay: 0s;
+      }
+
+      .hero-slide--2 {
+        background-image:
+          linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.9),
+            rgba(244, 229, 191, 0.8)
+          ),
+          url("images/bride.jpg");
+        animation-delay: 4s;
+      }
+
+      .hero-slide--3 {
+        background-image:
+          linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.86),
+            rgba(244, 229, 191, 0.74)
+          ),
+          url("images/groom.jpg");
+        animation-delay: 8s;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 250, 243, 0.22);
+        z-index: -1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      .hero-heading {
+        font-family: var(--font-sans);
+        font-size: 0.72rem;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: var(--accent-gold);
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .hero-subtitle {
+        font-size: 0.94rem;
+        color: var(--text-muted);
+        margin-bottom: 6px;
+      }
+
+      .hero-names {
+        font-family: var(--font-script);
+        font-size: clamp(2.8rem, 5.8vw, 4.4rem);
+        letter-spacing: 0.12em;
+        font-weight: 400;
+        color: var(--accent-emerald);
+        margin-bottom: 16px;
+      }
+
+      .hero-copy {
+        max-width: 620px;
+        margin: 0 auto 16px;
+        font-size: 1rem;
+        color: var(--text-muted);
+      }
+
+      .hero-date {
+        font-size: 1.08rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        letter-spacing: 0.04em;
+      }
+
+      .section {
+        padding: 56px 0 0;
+      }
+
+      .section-heading {
+        text-align: center;
+        font-family: var(--font-sans);
+        font-size: 1.16rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--accent-emerald);
+        margin-bottom: 24px;
+        font-weight: 600;
+      }
+
+      .section-heading::after {
+        content: "";
+        display: block;
+        width: 72px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent-gold),
+          transparent
+        );
+        margin: 10px auto 0;
+      }
+
+      .section-copy {
+        text-align: center;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+      }
+
+      .celebrate-grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: center;
+      }
+
+      .celebrate-card,
+      .timeline-card,
+      .venue-card,
+      .rsvp-form,
+      .notes,
+      .map-card,
+      .details-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(31, 31, 31, 0.04);
+      }
+
+      .celebrate-card {
+        position: relative;
+        overflow: hidden;
+        padding: 0;
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .celebrate-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.08),
+          rgba(0, 0, 0, 0.5)
+        );
+      }
+
+      .celebrate-card-content {
+        position: relative;
+        z-index: 1;
+        padding: 24px;
+        color: #fff;
+      }
+
+      .celebrate-card-content h3 {
+        font-family: var(--font-script);
+        font-size: 1.85rem;
+        font-weight: 400;
+        margin-bottom: 6px;
+        letter-spacing: 0.08em;
+        text-transform: none;
+      }
+
+      .celebrate-card-content p {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .celebrate-divider {
+        font-size: 2rem;
+        color: var(--accent-gold);
+        font-family: var(--font-serif);
+        line-height: 1;
+      }
+
+      .timeline-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .timeline-card {
+        padding: 22px 16px;
+        text-align: center;
+        min-height: 132px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .timeline-card h3 {
+        font-size: 1.12rem;
+        color: var(--accent-emerald);
+        margin-bottom: 8px;
+        font-family: var(--font-sans);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .timeline-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      .location-wrap {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+
+      .map-card {
+        padding: 10px;
+      }
+
+      .venue-card {
+        padding: 18px 20px;
+      }
+
+      .map-card iframe {
+        width: 100%;
+        height: 320px;
+        border: 0;
+        border-radius: 8px;
+        display: block;
+      }
+
+      .venue-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .venue-card {
+        padding: 20px 18px;
+      }
+
+      .venue-card h3 {
+        font-size: 1.08rem;
+        color: var(--accent-gold);
+        margin-bottom: 6px;
+        font-family: var(--font-sans);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .venue-card p {
+        color: var(--text-muted);
+        margin-bottom: 10px;
+      }
+
+      .venue-card a {
+        color: var(--accent-emerald);
+        text-decoration: none;
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .details-card {
+        padding: 24px;
+        text-align: center;
+      }
+
+      .details-card h3 {
+        font-size: 1.45rem;
+        color: var(--accent-gold);
+        margin-bottom: 8px;
+        font-family: var(--font-serif);
+        font-weight: 600;
+      }
+
+      .details-card p {
+        color: var(--text-muted);
+        margin-bottom: 8px;
+      }
+
+      .location-link {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 10px 16px;
+        background-color: var(--accent-emerald);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        border-radius: 999px;
+      }
+
+      .rsvp-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+      }
+
+      .rsvp-form {
+        padding: 28px;
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .form-group label,
+      .attendance legend,
+      .notificationPref legend {
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+
+      .form-input,
+      .form-select {
+        width: 100%;
+        padding: 13px 14px;
+        border: none;
+        border-bottom: 1px solid var(--border-subtle);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--text-primary);
+        font-size: 0.95rem;
+        font-family: var(--font-serif);
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+
+      .form-input:focus,
+      .form-select:focus {
+        outline: none;
+        border-color: #d4af37;
+        box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+        transition:
+          border-color 0.2s ease-in-out,
+          box-shadow 0.2s ease-in-out;
+      }
+
+      .form-select {
+        background-image:
+          linear-gradient(45deg, transparent 50%, var(--accent-gold) 50%),
+          linear-gradient(135deg, var(--accent-gold) 50%, transparent 50%);
+        background-position:
+          calc(100% - 20px) calc(50% - 3px),
+          calc(100% - 14px) calc(50% - 3px);
+        background-size:
+          6px 6px,
+          6px 6px;
+        background-repeat: no-repeat;
+        padding-right: 40px;
+      }
+
+      .attendance {
+        border: 0;
+        padding: 0;
+        margin: 18px 0;
+      }
+      .notificationPref {
+        border: 0;
+        padding: 0;
+        margin: 18px 0;
+      }
+
+      .attendance-options {
+        display: flex;
+        gap: 18px;
+        margin-top: 8px;
+      }
+
+      .notificationPref-options {
+        display: flex;
+        gap: 18px;
+        margin-top: 8px;
+      }
+
+      .btn-submit {
+        width: 100%;
+        border: none;
+        border-radius: 999px;
+        padding: 13px 16px;
+        background: var(--accent-emerald);
+        color: #fff;
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      .btn-submit:hover {
+        background: var(--accent-gold);
+        color: #111;
+      }
+
+      .notes {
+        padding: 24px 26px;
+        color: var(--text-muted);
+        min-height: auto;
+        margin-top: 4px;
+        text-align: center;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        font-size: 1rem;
+        font-family: var(--font-serif);
+      }
+
+      .notes p + p {
+        margin-top: 10px;
+      }
+
+      .countdown {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+        width: min(100%, 980px);
+        margin: 0 auto;
+        padding: 56px 28px;
+        min-height: 250px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        background:
+          linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.36),
+            rgba(244, 229, 191, 0.2)
+          ),
+          url("images/countdown3.jpg") center/cover;
+        box-shadow: 0 12px 36px rgba(31, 31, 31, 0.06);
+      }
+
+      .countdown::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 250, 243, 0.2);
+        z-index: 0;
+      }
+
+      .countdown-box {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 18px 12px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(2px);
+      }
+
+      .countdown-value {
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: var(--accent-emerald);
+      }
+
+      .countdown-label {
+        display: block;
+        font-size: 0.82rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-top: 4px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr;
+        max-width: 520px;
+        margin: 0 auto;
+        min-height: 220px;
+      }
+
+      .gallery-item {
+        overflow: hidden;
+        border-radius: 10px;
+        border: 1px solid var(--border-subtle);
+        background: var(--bg-surface);
+        box-shadow: 0 8px 24px rgba(31, 31, 31, 0.04);
+        opacity: 0;
+        transform: translateY(-24px);
+        animation: dropIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        will-change: transform, opacity;
+      }
+
+      .gallery-item:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        display: block;
+      }
+
+      @keyframes dropIn {
+        from {
+          opacity: 0;
+          transform: translateY(-24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .gallery-fallback {
+        height: 240px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--accent-gold-soft), #fff);
+        color: var(--accent-emerald);
+        font-family: var(--font-serif);
+        font-size: 1.2rem;
+        padding: 16px;
+        text-align: center;
+      }
+
+      .feedback-box {
+        margin-top: 14px;
+        padding: 12px;
+        border-radius: 8px;
+        display: none;
+        font-size: 0.9rem;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 40px 0 8px;
+        color: var(--text-light);
+        font-size: 0.84rem;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+
+      .footer-links a {
+        color: var(--accent-emerald);
+        text-decoration: none;
+      }
+
+      @keyframes heroFade {
+        0% {
+          opacity: 0;
+        }
+        8% {
+          opacity: 1;
+        }
+        33% {
+          opacity: 1;
+        }
+        42% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          padding: 72px 20px 64px;
+        }
+
+        .timeline-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .location-wrap {
+          grid-template-columns: 1fr;
+        }
+
+        .countdown {
+          padding: 40px 24px;
+          min-height: 190px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .page {
+          padding: 24px 16px 40px;
+        }
+
+        .hero {
+          padding: 60px 16px 56px;
+          border-radius: 12px;
+        }
+
+        .hero-copy {
+          font-size: 0.92rem;
+        }
+
+        .section {
+          padding-top: 40px;
+        }
+
+        .celebrate-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .celebrate-divider {
+          display: none;
+        }
+
+        .timeline-grid,
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .rsvp-form {
+          padding: 20px;
+          flex-direction: column;
+        }
+
+        .notes {
+          padding: 20px;
+        }
+
+        .attendance-options {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .notificationPref-options {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .countdown {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          padding: 32px 18px;
+          min-height: 180px;
+        }
+
+        .countdown-value {
+          font-size: 1.3rem;
+        }
+
+        .map-card iframe {
+          height: 260px;
+        }
+
+        .gallery-item img {
+          height: clamp(260px, 56vw, 360px);
+        }
+      }
+
+      @media (min-width: 600px) {
+        .form-row {
+          grid-template-columns: minmax(60px, 0.3fr) minmax(0, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-heading {
+          font-size: 0.66rem;
+          letter-spacing: 0.24em;
+        }
+
+        .rsvp-form {
+          padding: 20px;
+          flex-direction: column;
+        }
+        .hero-names {
+          font-size: clamp(2.1rem, 8vw, 2.8rem);
+        }
+
+        .hero-date {
+          font-size: 1rem;
+        }
+
+        .countdown {
+          grid-template-columns: 1fr;
+          padding: 24px 16px;
+          min-height: 140px;
+        }
+
+        .countdown-box {
+          padding: 14px 10px;
+        }
+
+        .section-heading {
+          font-size: 1.08rem;
+        }
+
+        .gallery-item img {
+          height: 260px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero-slides" aria-hidden="true">
+          <div class="hero-slide hero-slide--1"></div>
+          <div class="hero-slide hero-slide--2"></div>
+          <div class="hero-slide hero-slide--3"></div>
+        </div>
+        <div class="hero-content">
+          <p class="hero-heading">You Are Invited</p>
+          <p class="hero-subtitle">Together with their families,</p>
+          <h1 class="hero-names serif-font">Chibuta &amp; Constance</h1>
+          <p class="hero-copy">
+            warmly invite you to join them as they celebrate their union.
+          </p>
+          <p class="hero-date" id="eventDateText">
+            Saturday 28th November 2026
+          </p>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2 class="section-heading">Celebrate With Us</h2>
+        <div class="celebrate-grid">
+          <div
+            class="celebrate-card"
+            style="background-image: url(&quot;images/groom.jpg&quot;)"
+          >
+            <div class="celebrate-card-content">
+              <h3 class="serif-font">Chibuta</h3>
+              <p>The Groom</p>
+            </div>
+          </div>
+          <div class="celebrate-divider" aria-hidden="true">&amp;</div>
+          <div
+            class="celebrate-card"
+            style="background-image: url(&quot;images/bride.jpg&quot;)"
+          >
+            <div class="celebrate-card-content">
+              <h3 class="serif-font">Constance</h3>
+              <p>The Bride</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-heading">Wedding Timeline</h2>
+        <div class="timeline-grid">
+          <div class="timeline-card">
+            <h3>Marriage blessing</h3>
+            <p>10:00 - 11:00</p>
+          </div>
+          <div class="timeline-card">
+            <h3>Photo Session</h3>
+            <p>11:00 - 12:00</p>
+          </div>
+          <div class="timeline-card">
+            <h3>Reception</h3>
+            <p>17:00 - 21:00</p>
+          </div>
+          <div class="timeline-card">
+            <h3>Dress Code</h3>
+            <p>Black Tie</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-heading">Location</h2>
+        <div class="location-wrap">
+          <div class="map-card">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.428740114035!2d28.6756263!3d-12.9443714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1944b5fdaf3a6d81%3A0x7c06417ab15287bb!2sD%20M%20K%20Gardens!5e0!3m2!1sen!2szm!4v1719582000000!5m2!1sen!2szm"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div class="venue-list">
+            <div class="venue-card">
+              <h3>Marriage Blessing</h3>
+              <p>DMK Gardens</p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=DMK+Gardens+Ndola"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open In Maps</a
+              >
+            </div>
+            <div class="venue-card">
+              <h3>Reception</h3>
+              <p>DMK Gardens</p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=DMK+Gardens+Ndola"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open In Maps</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-heading">RSVP</h2>
+        <p class="section-copy">Please confirm your attendance.</p>
+        <div class="rsvp-wrap">
+          <form id="rsvpForm" class="rsvp-form">
+            <div class="form-grid">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="guestTitle">Title *</label>
+                  <select id="guestTitle" class="form-select" required>
+                    <option value="Mr.">Mr.</option>
+                    <option value="Ms.">Ms.</option>
+                    <option value="Mrs.">Mrs.</option>
+                    <option value="Dr.">Dr.</option>
+                    <option value="Hon.">Hon.</option>
+                    <option value="Prof.">Prof.</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="guestName">Full Name *</label>
+                  <input
+                    type="text"
+                    id="guestName"
+                    class="form-input"
+                    placeholder="Full Name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="guestPhone">Phone Number *</label>
+                <input
+                  type="tel"
+                  id="guestPhone"
+                  class="form-input"
+                  placeholder="Phone Number"
+                  required
+                />
+              </div>
+
+              <fieldset class="notificationPref">
+                <legend>Receive ticket via *</legend>
+                <div class="notificationPref-options">
+                  <label
+                    ><input
+                      type="radio"
+                      name="notificationPref"
+                      value="WhatsApp"
+                      checked
+                    />
+                    WhatsApp</label
+                  >
+                  <label
+                    ><input type="radio" name="notificationPref" value="SMS" />
+                    SMS</label
+                  >
+                </div>
+              </fieldset>
+
+              <div class="form-group">
+                <label for="guestFamily">Side of the Family *</label>
+                <select id="guestFamily" class="form-select" required>
+                  <option value="Groom's Side">Groom's Side</option>
+                  <option value="Bride's Side">Bride's Side</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <fieldset class="attendance">
+              <legend>Will you be attending: *</legend>
+              <div class="attendance-options">
+                <label
+                  ><input type="radio" name="attendance" value="Yes" checked />
+                  Yes</label
+                >
+                <label
+                  ><input type="radio" name="attendance" value="No" /> No</label
+                >
+              </div>
+            </fieldset>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+              Send
+            </button>
+            <div id="formFeedback" class="feedback-box"></div>
+          </form>
+
+          <div class="notes">
+            <p>Gifts in monetary form will be appreciated.</p>
+            <p>Strictly no children.</p>
+            <p>For queries, please reach out to John; +260 900 0000</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-heading">Countdown</h2>
+        <div
+          class="countdown"
+          id="countdownSection"
+          data-event-date="2026-11-28T00:00:00"
+        >
+          <div class="countdown-box">
+            <div class="countdown-value" id="days">00</div>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-value" id="hours">00</div>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-value" id="minutes">00</div>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-value" id="seconds">00</div>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-heading">Captured Moments</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="images/groom.jpg" alt="Groom photo" />
+          </div>
+          <div class="gallery-item">
+            <img src="images/bride.jpg" alt="Bride photo" />
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>© 2026 Chibuta &amp; Constance. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms &amp; Conditions</a>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const countdownSection = document.getElementById("countdownSection");
+      const eventDateText = document.getElementById("eventDateText");
+      let eventDate = new Date("2026-11-28T00:00:00");
+      window.preference = window.preference || "WhatsApp";
+
+      function getEventDate() {
+        const meta = document.querySelector('meta[name="date"]');
+        const metaDateValue = meta
+          ? meta.getAttribute("content")?.trim()
+          : null;
+        const eventDateValue =
+          metaDateValue ||
+          (countdownSection && countdownSection.dataset.eventDate
+            ? countdownSection.dataset.eventDate.trim()
+            : null) ||
+          "2026-11-28T00:00:00";
+        const parsedDate = new Date(eventDateValue);
+
+        return Number.isNaN(parsedDate.getTime())
+          ? new Date("2026-11-28T00:00:00")
+          : parsedDate;
+      }
+
+      function formatEventDate(date) {
+        const days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        const months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        const day = date.getDate();
+        const suffix =
+          day % 10 === 1 && day % 100 !== 11
+            ? "st"
+            : day % 10 === 2 && day % 100 !== 12
+              ? "nd"
+              : day % 10 === 3 && day % 100 !== 13
+                ? "rd"
+                : "th";
+
+        return `${days[date.getDay()]} ${day}${suffix} ${months[date.getMonth()]} ${date.getFullYear()}`;
+      }
+
+      function updateEventDateDisplay() {
+        eventDate = getEventDate();
+        if (eventDateText) {
+          eventDateText.textContent = formatEventDate(eventDate);
+        }
+      }
+
+      updateEventDateDisplay();
+
+      function updateCountdown() {
+        const now = Date.now();
+        const diff = eventDate.getTime() - now;
+
+        if (diff <= 0) {
+          document.getElementById("days").textContent = "00";
+          document.getElementById("hours").textContent = "00";
+          document.getElementById("minutes").textContent = "00";
+          document.getElementById("seconds").textContent = "00";
+          return;
+        }
+
+        const totalSeconds = Math.floor(diff / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        document.getElementById("days").textContent = String(days).padStart(
+          2,
+          "0",
+        );
+        document.getElementById("hours").textContent = String(hours).padStart(
+          2,
+          "0",
+        );
+        document.getElementById("minutes").textContent = String(
+          minutes,
+        ).padStart(2, "0");
+        document.getElementById("seconds").textContent = String(
+          seconds,
+        ).padStart(2, "0");
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      // event date rarely changes — update once a minute
+      setInterval(updateEventDateDisplay, 60000);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const rsvpForm = document.getElementById("rsvpForm");
+        const submitBtn = document.getElementById("submitBtn");
+        const feedback = document.getElementById("formFeedback");
+
+        if (rsvpForm && submitBtn && feedback) {
+          rsvpForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            // UI visual lock down to prevent multi-submit submission execution loops
+            submitBtn.textContent = "Processing...";
+            submitBtn.disabled = true;
+            feedback.style.display = "none";
+
+            // Parse and format the raw phone field string safely
+            const phoneInput = document.getElementById("guestPhone");
+            let rawPhone = phoneInput
+              ? phoneInput.value.replace(/\D/g, "")
+              : "";
+            // remove leading + or 00
+            rawPhone = rawPhone.replace(/^(?:\+|00)/, "");
+            // strip leading country code if present, or leading zero
+            if (rawPhone.startsWith("260"))
+              rawPhone = rawPhone.replace(/^260/, "");
+            if (rawPhone.startsWith("0")) rawPhone = rawPhone.substring(1);
+            const formattedPhone = "260" + rawPhone;
+
+            const attendanceNode = document.querySelector(
+              'input[name="attendance"]:checked',
+            );
+            const prefNode = document.querySelector(
+              'input[name="notificationPref"]:checked',
+            );
+            const titleNode = document.getElementById("guestTitle");
+            const nameNode = document.getElementById("guestName");
+            const familyNode = document.getElementById("guestFamily");
+
+            const notificationPreference = prefNode
+              ? prefNode.value
+              : "WhatsApp";
+            window.preference = notificationPreference;
+
+            // Assemble payload accurately
+            const formData = {
+              title: titleNode ? titleNode.value : "",
+              name: nameNode ? nameNode.value.trim() : "Guest",
+              phone: formattedPhone,
+              familySide: familyNode ? familyNode.value : "Other",
+              attending: attendanceNode ? attendanceNode.value : "Yes",
+              preference: notificationPreference,
+            };
+
+            // 🚨 CRITICAL: Paste your Google Web App URL deployment link below
+            const webAppUrl =
+              "https://script.google.com/macros/s/AKfycbw1ha_5s5JWb1E3oOUkIk_WMd2zoet0uaZUbTOlV1Kuk2vpRRX8fWoIZXzhvcKcb7O-/exec";
+
+            try {
+              const response = await fetch(webAppUrl, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify(formData),
+              });
+
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+
+              const res = await response.json();
+              feedback.style.display = "block";
+
+              // Handle duplicate record matches safely
+              if (res.result === "duplicate") {
+                feedback.style.backgroundColor = "#fffaf0";
+                feedback.style.color = "#b7791f";
+                feedback.style.border = "1px solid #feebc8";
+
+                const chosenChannel =
+                  formData.preference === "WhatsApp" ? "WhatsApp" : "SMS";
+
+                if (res.status === "Approved") {
+                  feedback.textContent = `This phone number is already registered and your entry ticket is Approved! Please check your ${chosenChannel} messages.`;
+                } else if (res.status === "Pending") {
+                  feedback.textContent = `This phone number is already registered and your RSVP is Pending Approval. We will update you via ${chosenChannel} soon!`;
+                } else {
+                  feedback.textContent = `This phone number is already registered (Status: ${res.status}).`;
+                }
+
+                // Handle normal entry tracking confirmations
+              } else if (res.result === "success") {
+                feedback.style.backgroundColor = "#f4fbf7";
+                feedback.style.color = "#1b6b43";
+                feedback.style.border = "1px solid #ccebda";
+                feedback.textContent = "RSVP submitted successfully.";
+                rsvpForm.reset();
+              } else {
+                throw new Error(res.message || "Unknown server error");
+              }
+            } catch (error) {
+              console.error("Submission error:", error);
+              feedback.style.display = "block";
+              feedback.style.backgroundColor = "#fdf2f2";
+              feedback.style.color = "#9b1c1c";
+              feedback.style.border = "1px solid #fde8e8";
+              feedback.textContent =
+                "Unable to submit RSVP right now. Please try again.";
+            } finally {
+              submitBtn.textContent = "Send";
+              submitBtn.disabled = false;
+            }
+          });
+        } else {
+          console.error(
+            "RSVP configuration error: One or more critical DOM elements not found.",
+          );
+        }
+      });
+    </script>
+  </body>
+</html>
