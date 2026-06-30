@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wedding RSVP</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f7efe2;
+        color: #1f1f1f;
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .container {
+        width: min(520px, 100%);
+        background: #fffdf8;
+        border: 1px solid #e8dfcf;
+        border-radius: 16px;
+        box-shadow: 0 18px 48px rgba(31, 31, 31, 0.08);
+        padding: 28px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+      }
+
+      p {
+        margin: 0 0 20px;
+        color: #5f3b04;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.88rem;
+        color: #5f3b04;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #e8dfcf;
+        border-radius: 10px;
+        margin-bottom: 16px;
+        font-size: 1rem;
+      }
+
+      fieldset {
+        border: none;
+        padding: 0;
+        margin: 0 0 16px;
+      }
+
+      .options {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .options label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+      }
+
+      button {
+        width: 100%;
+        padding: 14px 16px;
+        border: none;
+        border-radius: 999px;
+        background: #4d6b4d;
+        color: white;
+        font-size: 0.95rem;
+        cursor: pointer;
+      }
+
+      .feedback {
+        margin-top: 18px;
+        padding: 14px;
+        border-radius: 10px;
+        display: none;
+        font-size: 0.95rem;
+      }
+
+      .feedback.success {
+        display: block;
+        background: #f4fbf7;
+        border: 1px solid #ccebda;
+        color: #1b6b43;
+      }
+
+      .feedback.error {
+        display: block;
+        background: #fdf2f2;
+        border: 1px solid #fde8e8;
+        color: #9b1c1c;
+      }
+
+      .feedback.warning {
+        display: block;
+        background: #fffaf0;
+        border: 1px solid #feebc8;
+        color: #b7791f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Wedding RSVP</h1>
+      <p>Send your RSVP to the wedding coordinator.</p>
+
+      <form id="rsvpForm">
+        <label for="guestTitle">Title</label>
+        <select id="guestTitle" required>
+          <option value="Mr.">Mr.</option>
+          <option value="Ms.">Ms.</option>
+          <option value="Mrs.">Mrs.</option>
+          <option value="Dr.">Dr.</option>
+        </select>
+
+        <label for="guestName">Full Name</label>
+        <input id="guestName" type="text" placeholder="Full Name" required />
+
+        <label for="guestPhone">Phone Number</label>
+        <input
+          id="guestPhone"
+          type="tel"
+          placeholder="e.g. 0971234567"
+          required
+        />
+
+        <label for="guestFamily">Side of the Family</label>
+        <select id="guestFamily" required>
+          <option value="Groom's Side">Groom's Side</option>
+          <option value="Bride's Side">Bride's Side</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <fieldset>
+          <legend>Attending?</legend>
+          <div class="options">
+            <label
+              ><input type="radio" name="attendance" value="Yes" checked />
+              Yes</label
+            >
+            <label
+              ><input type="radio" name="attendance" value="No" /> No</label
+            >
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Receive ticket via</legend>
+          <div class="options">
+            <label
+              ><input
+                type="radio"
+                name="notificationPref"
+                value="WhatsApp"
+                checked
+              />
+              WhatsApp</label
+            >
+            <label
+              ><input type="radio" name="notificationPref" value="SMS" />
+              SMS</label
+            >
+          </div>
+        </fieldset>
+
+        <button type="submit">Submit RSVP</button>
+        <div id="formFeedback" class="feedback"></div>
+      </form>
+    </div>
+
+    <script>
+      const webAppUrl =
+        "https://script.google.com/macros/s/AKfycbw1ha_5s5JWb1E3oOUkIk_WMd2zoet0uaZUbTOlV1Kuk2vpRRX8fWoIZXzhvcKcb7O-/exec";
+
+      const feedbackEl = document.getElementById("formFeedback");
+      const rsvpForm = document.getElementById("rsvpForm");
+
+      function formatPhone(raw) {
+        let value = String(raw || "")
+          .trim()
+          .replace(/\D/g, "");
+        value = value.replace(/^(?:\+|00)/, "");
+        if (value.startsWith("260")) value = value.slice(3);
+        if (value.startsWith("0")) value = value.slice(1);
+        return value ? `260${value}` : "";
+      }
+
+      function setFeedback(message, type) {
+        feedbackEl.textContent = message;
+        feedbackEl.className = "feedback";
+        if (type) feedbackEl.classList.add(type);
+      }
+
+      function getRadioValue(name, fallback) {
+        return (
+          document.querySelector(`input[name="${name}"]:checked`)?.value ||
+          fallback
+        );
+      }
+
+      rsvpForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        setFeedback("", null);
+
+        const title = document.getElementById("guestTitle").value;
+        const name = document.getElementById("guestName").value.trim();
+        const phone = formatPhone(document.getElementById("guestPhone").value);
+        const familySide = document.getElementById("guestFamily").value;
+        const attending = getRadioValue("attendance", "Yes");
+        const preference = getRadioValue("notificationPref", "WhatsApp");
+
+        if (!phone) {
+          setFeedback("Please enter a valid phone number.", "error");
+          return;
+        }
+
+        const payload = {
+          title,
+          name,
+          phone,
+          familySide,
+          attending,
+          preference,
+        };
+
+        try {
+          const response = await fetch(webAppUrl, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain" },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+
+          const result = await response.json();
+
+          if (result.result === "success") {
+            setFeedback("RSVP submitted successfully. Thank you!", "success");
+            rsvpForm.reset();
+          } else if (result.result === "duplicate") {
+            setFeedback(
+              `This phone number already exists with status: ${result.status}.`,
+              "warning",
+            );
+          } else {
+            throw new Error(
+              result.message || "Server rejected the submission.",
+            );
+          }
+        } catch (error) {
+          setFeedback(
+            "Unable to submit RSVP right now. Please try again later.",
+            "error",
+          );
+          console.error(error);
+        }
+      });
+    </script>
+  </body>
+</html>
