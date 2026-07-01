@@ -35,7 +35,7 @@
         font-family: var(--font-serif);
         background: var(--bg-base);
         color: var(--text-primary);
-        line-height: 1.75;
+        line-height: 1.5;
         -webkit-font-smoothing: antialiased;
         font-size: 16px;
         font-weight: 400;
@@ -46,6 +46,20 @@
         margin: 0 auto;
         padding: 32px 24px 48px;
       }
+      nav {
+        background: var(--accent-emerald);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+      }
+
+      nav .nav-title {
+        margin: 5px;
+        font-size: 1.8rem;
+        color: var(--text-muted);
+      }
+
 
       .hero {    
         width: 100vw;    
@@ -121,13 +135,13 @@
         position: relative;
         z-index: 1;
         max-width: 720px;
-        margin: 0 auto;
+        margin-top: 50px;
+        text-align: center;
       }
 
       .hero-heading {
         font-family: var(--font-sans);
         font-size: 1.5rem;
-        letter-spacing: 0.34em;
         text-transform: uppercase;
         color: var(--accent-gold);
         font-weight: 500;
@@ -148,14 +162,7 @@
         color: var(--accent-emerald);
         margin-bottom: 16px;
       }
-
-      .hero-copy {
-        max-width: 620px;
-        margin: 0 auto 16px;
-        font-size: 1.5rem;
-        color: var(--text-muted);
-      }
-
+      
       .hero-date {
         font-size: 1.5rem;
         font-weight: 600;
@@ -877,6 +884,9 @@
     </style>
   </head>
   <body>
+    <nav>
+      <h1 class="nav-title">You Are Warmly Invited</h1>
+    </nav>
           <header class="hero">
         <div class="hero-slides" aria-hidden="true">
           <div class="hero-slide hero-slide--1"></div>
@@ -885,7 +895,6 @@
         </div>
 
         <div class="hero-content">
-          <p class="hero-heading">You Are Invited</p>
           <p class="hero-subtitle">Together with their families,</p>
           <h1 class="hero-names serif-font">Chibuta &amp; Constance</h1>
           <p class="hero-copy">
