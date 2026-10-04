@@ -45,6 +45,53 @@
         overflow: hidden;
       }
 
+      body.invitation-locked .music-toggle {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      body.is-scrolling .music-toggle {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .music-toggle {
+        position: fixed;
+        right: max(18px, env(safe-area-inset-right));
+        bottom: max(18px, env(safe-area-inset-bottom));
+        z-index: 110;
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        border-radius: 50%;
+        background: var(--accent-emerald);
+        color: #fff;
+        font-family: var(--font-sans);
+        font-size: 1rem;
+        line-height: 1;
+        cursor: pointer;
+        box-shadow: 0 6px 18px rgba(31, 31, 31, 0.2);
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+      }
+
+      .music-toggle:hover,
+      .music-toggle:focus-visible {
+        background: #38533a;
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+      }
+
+      .music-toggle:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
       .invitation-opener {
         position: fixed;
         inset: 0;
@@ -1406,6 +1453,16 @@
     </style>
   </head>
   <body class="invitation-locked">
+    <button
+      class="music-toggle"
+      id="musicToggle"
+      type="button"
+      aria-label="Play wedding music"
+      aria-pressed="false"
+      title="Play wedding music"
+    >
+      &#9654;
+    </button>
     <div class="invitation-opener" id="invitationOpener">
       <div class="invitation-cover">
         <p class="invitation-cover-kicker">A celebration of love</p>
@@ -1680,37 +1737,92 @@
             tabindex="0"
           >
             <div class="gallery-item">
-              <img src="images/DSC05186.jpg" alt="Groom photo" />
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 320'%3E%3Crect width='480' height='320' fill='%23f1e8db'/%3E%3Ccircle cx='150' cy='120' r='80' fill='%23d9c9a1' opacity='0.65'/%3E%3C/svg%3E"
+                data-src="images/DSC05186.jpg"
+                alt="Groom photo"
+                loading="lazy"
+              />
             </div>
             <div class="gallery-item">
-              <img src="images/DSC05200.jpg" alt="Groom photo" />
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 320'%3E%3Crect width='480' height='320' fill='%23f1e8db'/%3E%3Ccircle cx='150' cy='120' r='80' fill='%23d9c9a1' opacity='0.65'/%3E%3C/svg%3E"
+                data-src="images/DSC05200.jpg"
+                alt="Groom photo"
+                loading="lazy"
+              />
             </div>
             <div class="gallery-item">
-              <img src="images/DSC05216.jpg" alt="Groom photo" />
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 320'%3E%3Crect width='480' height='320' fill='%23f1e8db'/%3E%3Ccircle cx='150' cy='120' r='80' fill='%23d9c9a1' opacity='0.65'/%3E%3C/svg%3E"
+                data-src="images/DSC05216.jpg"
+                alt="Groom photo"
+                loading="lazy"
+              />
             </div>
             <div class="gallery-item">
-              <img src="images/DSC05228.jpg" alt="Groom photo" />
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 320'%3E%3Crect width='480' height='320' fill='%23f1e8db'/%3E%3Ccircle cx='150' cy='120' r='80' fill='%23d9c9a1' opacity='0.65'/%3E%3C/svg%3E"
+                data-src="images/DSC05228.jpg"
+                alt="Groom photo"
+                loading="lazy"
+              />
             </div>
             <div class="gallery-item">
-              <img src="images/DSC05239.jpg" alt="Groom photo" />
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 320'%3E%3Crect width='480' height='320' fill='%23f1e8db'/%3E%3Ccircle cx='150' cy='120' r='80' fill='%23d9c9a1' opacity='0.65'/%3E%3C/svg%3E"
+                data-src="images/DSC05239.jpg"
+                alt="Groom photo"
+                loading="lazy"
+              />
             </div>
             <div class="gallery-item">
-              <img src="images/DSC05259.jpg" alt="Groom photo" />
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 320'%3E%3Crect width='480' height='320' fill='%23f1e8db'/%3E%3Ccircle cx='150' cy='120' r='80' fill='%23d9c9a1' opacity='0.65'/%3E%3C/svg%3E"
+                data-src="images/DSC05259.jpg"
+                alt="Groom photo"
+                loading="lazy"
+              />
             </div>
             <div class="gallery-item">
-              <img src="images/DSC05302.jpg" alt="Groom photo" />
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 320'%3E%3Crect width='480' height='320' fill='%23f1e8db'/%3E%3Ccircle cx='150' cy='120' r='80' fill='%23d9c9a1' opacity='0.65'/%3E%3C/svg%3E"
+                data-src="images/DSC05302.jpg"
+                alt="Groom photo"
+                loading="lazy"
+              />
             </div>
             <div class="gallery-item">
-              <img src="images/DSC05327.jpg" alt="Bride photo" />
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 320'%3E%3Crect width='480' height='320' fill='%23f1e8db'/%3E%3Ccircle cx='150' cy='120' r='80' fill='%23d9c9a1' opacity='0.65'/%3E%3C/svg%3E"
+                data-src="images/DSC05327.jpg"
+                alt="Bride photo"
+                loading="lazy"
+              />
             </div>
             <div class="gallery-item">
-              <img src="images/DSC05363.jpg" alt="Groom photo" />
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 320'%3E%3Crect width='480' height='320' fill='%23f1e8db'/%3E%3Ccircle cx='150' cy='120' r='80' fill='%23d9c9a1' opacity='0.65'/%3E%3C/svg%3E"
+                data-src="images/DSC05363.jpg"
+                alt="Groom photo"
+                loading="lazy"
+              />
             </div>
             <div class="gallery-item">
-              <img src="images/DSC05376.jpg" alt="Groom photo" />
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 320'%3E%3Crect width='480' height='320' fill='%23f1e8db'/%3E%3Ccircle cx='150' cy='120' r='80' fill='%23d9c9a1' opacity='0.65'/%3E%3C/svg%3E"
+                data-src="images/DSC05376.jpg"
+                alt="Groom photo"
+                loading="lazy"
+              />
             </div>
             <div class="gallery-item">
-              <img src="images/DSC05407.jpg" alt="Groom photo" />
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 320'%3E%3Crect width='480' height='320' fill='%23f1e8db'/%3E%3Ccircle cx='150' cy='120' r='80' fill='%23d9c9a1' opacity='0.65'/%3E%3C/svg%3E"
+                data-src="images/DSC05407.jpg"
+                alt="Groom photo"
+                loading="lazy"
+              />
             </div>
           </div>
           <div
@@ -1785,12 +1897,78 @@
       const openInvitationButton = document.getElementById(
         "openInvitationButton",
       );
+      const musicToggle = document.getElementById("musicToggle");
       const invitationHero = document.querySelector(".hero");
+      const weddingAudio = new Audio();
+      weddingAudio.loop = true;
+      weddingAudio.preload = "none";
+      let musicPlaying = false;
+      let scrollVisibilityTimer;
 
-      openInvitationButton?.addEventListener("click", () => {
+      function ensureWeddingAudioReady() {
+        if (!weddingAudio.src) {
+          weddingAudio.src = "music/Jessie-J-Flashlight.mp3";
+          weddingAudio.load();
+        }
+      }
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          document.body.classList.add("is-scrolling");
+          window.clearTimeout(scrollVisibilityTimer);
+          scrollVisibilityTimer = window.setTimeout(() => {
+            document.body.classList.remove("is-scrolling");
+          }, 700);
+        },
+        { passive: true },
+      );
+
+      async function startWeddingMusic() {
+        if (musicPlaying) return;
+        ensureWeddingAudioReady();
+        await weddingAudio.play();
+        musicPlaying = true;
+        musicToggle.innerHTML = "&#10074;&#10074;";
+        musicToggle.setAttribute("aria-label", "Pause wedding music");
+        musicToggle.setAttribute("aria-pressed", "true");
+        musicToggle.title = "Pause wedding music";
+      }
+
+      function pauseWeddingMusic() {
+        musicPlaying = false;
+        weddingAudio.pause();
+        musicToggle.innerHTML = "&#9654;";
+        musicToggle.setAttribute("aria-label", "Play wedding music");
+        musicToggle.setAttribute("aria-pressed", "false");
+        musicToggle.title = "Play wedding music";
+      }
+
+      musicToggle?.addEventListener("click", async () => {
+        if (musicPlaying) {
+          pauseWeddingMusic();
+          return;
+        }
+
+        try {
+          await startWeddingMusic();
+        } catch (error) {
+          console.error("Wedding music could not start:", error);
+          musicToggle.disabled = true;
+          musicToggle.setAttribute("aria-label", "Wedding music unavailable");
+          musicToggle.title = "Wedding music could not start";
+        }
+      });
+
+      openInvitationButton?.addEventListener("click", async () => {
         if (!invitationOpener || !openInvitationButton) return;
         openInvitationButton.disabled = true;
         invitationOpener.classList.add("is-opening");
+        try {
+          await startWeddingMusic();
+        } catch (error) {
+          console.error("Wedding music could not start:", error);
+        }
         window.setTimeout(() => {
           invitationOpener.classList.add("is-open");
           invitationOpener.setAttribute("aria-hidden", "true");
@@ -1950,6 +2128,42 @@
       let currentLightboxIndex = 0;
       let galleryScrollTimer;
 
+      function loadGalleryImage(img) {
+        if (!img || !img.dataset.src || img.dataset.loaded === "true") return;
+        const source = img.dataset.src;
+        img.loading = "eager";
+        img.src = source;
+        img.dataset.loaded = "true";
+      }
+
+      function observeGalleryImages() {
+        if (!galleryTrack) return;
+        const images = galleryTrack.querySelectorAll("img[data-src]");
+        if (!images.length) return;
+
+        const loadVisibleImages = () => {
+          const trackRect = galleryTrack.getBoundingClientRect();
+          images.forEach((img) => {
+            const rect = img.getBoundingClientRect();
+            const isVisible =
+              rect.top < window.innerHeight + 200 &&
+              rect.bottom > -200 &&
+              rect.left < window.innerWidth + 200 &&
+              rect.right > -200;
+
+            if (isVisible) {
+              loadGalleryImage(img);
+            }
+          });
+        };
+
+        loadVisibleImages();
+        galleryTrack.addEventListener("scroll", loadVisibleImages, {
+          passive: true,
+        });
+        window.addEventListener("resize", loadVisibleImages, { passive: true });
+      }
+
       if (galleryTrack && galleryPhotos.length > 1) {
         const lastPhotoClone =
           galleryPhotos[galleryPhotos.length - 1].cloneNode(true);
@@ -1961,6 +2175,8 @@
         galleryTrack.prepend(lastPhotoClone);
         galleryTrack.append(firstPhotoClone);
       }
+
+      observeGalleryImages();
 
       function getGalleryStep() {
         const firstPhoto = galleryTrack?.querySelector(".gallery-item");
@@ -2057,7 +2273,8 @@
         currentLightboxIndex =
           (index + galleryPhotos.length) % galleryPhotos.length;
         const photo = galleryPhotos[currentLightboxIndex].querySelector("img");
-        galleryLightboxImage.src = photo.currentSrc || photo.src;
+        loadGalleryImage(photo);
+        galleryLightboxImage.src = photo.dataset.src || photo.currentSrc || photo.src;
         galleryLightboxImage.alt = photo.alt;
       }
 
