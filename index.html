@@ -2756,7 +2756,7 @@
               throw new Error(`RSVP request failed (${response.status})`);
             const result = await response.json();
             if (result.result === "success") {
-              feedback.textContent = "Thank you — your RSVP has been received.";
+              feedback.textContent = "Thank you! Your RSVP has been received.";
               feedback.classList.add("is-success");
               form.reset();
             } else if (result.result === "duplicate") {
