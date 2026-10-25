@@ -579,7 +579,39 @@
         font: 500 0.78rem var(--sans);
         letter-spacing: 0.03em;
       }
-
+      .attire-colors {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 18px;
+        padding: 0;
+        list-style: none;
+      }
+      .attire-color {
+        display: grid;
+        justify-items: center;
+        gap: 6px;
+        color: var(--brown-light);
+        font: 500 0.58rem var(--sans);
+      }
+      .attire-color-swatch {
+        width: 22px;
+        aspect-ratio: 1;
+        border: 1px solid rgba(29, 91, 69, 0.18);
+        border-radius: 50%;
+      }
+      .attire-color-swatch--emerald {
+        background: #1d5b45;
+      }
+      .attire-color-swatch--sage {
+        background: #a8b89a;
+      }
+      .attire-color-swatch--champagne {
+        background: #d8bd86;
+      }
+      .attire-color-swatch--ivory {
+        background: #fffdf8;
+      }
       .reception-info {
         position: relative;
         width: min(88%, 960px);
@@ -1154,6 +1186,77 @@
         font-weight: 600;
         line-height: 1.8;
       }
+      .contact-note-copy {
+        margin: 0;
+      }
+      .gift-options {
+        display: grid;
+        margin: 18px 0 0;
+      }
+      .gift-option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+      }
+      .gift-option-details {
+        display: grid;
+        gap: 3px;
+      }
+      .gift-option-provider {
+        color: var(--brown-light);
+        font: 600 0.68rem var(--sans);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .gift-option-number {
+        display: block;
+        color: var(--brown-dark);
+        font: 600 0.98rem var(--sans);
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.04em;
+        line-height: 1.25;
+        text-align: left;
+        white-space: nowrap;
+      }
+      .gift-copy-button {
+        flex: 0 0 auto;
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: transparent;
+        color: var(--brown);
+        cursor: pointer;
+      }
+      .gift-copy-button:hover,
+      .gift-copy-button:focus-visible {
+        background: var(--brown);
+        color: var(--paper-light);
+      }
+      .gift-copy-button svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.7;
+      }
+      .gift-copy-feedback {
+        min-height: 1.4em;
+        margin: 8px 0 0;
+        color: var(--brown-light);
+        font: 500 0.78rem var(--sans);
+      }
+      .contact-note-queries {
+        margin: 18px 0 0;
+        font-size: 1.2rem;
+      }
       .contact-note a {
         display: inline-block;
         color: var(--brown-dark);
@@ -1622,7 +1725,7 @@
     <main class="page">
       <section class="section" id="welcome">
         <p class="section-kicker">With love and gratitude</p>
-        <h2 class="section-title">Our day, shared with you</h2>
+        <h2 class="section-title">Our day shared with you</h2>
         <p class="intro-copy">
           We would be delighted to have you with us as we begin this new chapter
           together. Your presence will make our celebration even more special.
@@ -1655,22 +1758,51 @@
           <article class="event-card">
             <p class="event-label">Ceremony</p>
             <h3>Marriage Blessing</h3>
-            <p class="event-time">10:00 – 11:00</p>
+            <p class="event-time">09:00</p>
           </article>
           <article class="event-card">
             <p class="event-label">After the vows</p>
             <h3>Photo Session</h3>
-            <p class="event-time">11:00 – 12:00</p>
+            <p class="event-time">11:00</p>
           </article>
           <article class="event-card">
             <p class="event-label">Evening</p>
             <h3>Reception</h3>
-            <p class="event-time">17:00 – 21:00</p>
+            <p class="event-time">15:00</p>
           </article>
           <article class="event-card">
             <p class="event-label">Attire</p>
-            <h3>Black Tie</h3>
-            <p class="event-time">Dress to celebrate</p>
+            <h3>Elegant Royal Garden</h3>
+            <ul class="attire-colors" aria-label="Suggested attire colors">
+              <li class="attire-color">
+                <span
+                  class="attire-color-swatch attire-color-swatch--emerald"
+                  aria-hidden="true"
+                ></span>
+                Emerald
+              </li>
+              <li class="attire-color">
+                <span
+                  class="attire-color-swatch attire-color-swatch--sage"
+                  aria-hidden="true"
+                ></span>
+                Sage
+              </li>
+              <li class="attire-color">
+                <span
+                  class="attire-color-swatch attire-color-swatch--champagne"
+                  aria-hidden="true"
+                ></span>
+                Champagne
+              </li>
+              <li class="attire-color">
+                <span
+                  class="attire-color-swatch attire-color-swatch--ivory"
+                  aria-hidden="true"
+                ></span>
+                Ivory
+              </li>
+            </ul>
           </article>
         </div>
       </section>
@@ -1678,7 +1810,7 @@
       <section
         class="section"
         id="location"
-        data-event-date="2026-11-28T10:00:00"
+        data-event-date="2026-11-28T09:00:00"
       >
         <div class="reception-info">
           <div class="reception-content">
@@ -1699,11 +1831,11 @@
             <div class="reception-times" aria-label="Event schedule">
               <div class="reception-time">
                 <span class="reception-time-label">Marriage blessing</span>
-                <span class="reception-time-value">10:00</span>
+                <span class="reception-time-value">09:00</span>
               </div>
               <div class="reception-time">
                 <span class="reception-time-label">Reception</span>
-                <span class="reception-time-value">15:00 – 19:00</span>
+                <span class="reception-time-value">15:00</span>
               </div>
             </div>
             <div class="reception-countdown" aria-live="polite">
@@ -1922,10 +2054,70 @@
             aria-live="polite"
           ></p>
         </form>
-        <p class="contact-note">
-          Gifts in monetary form will be appreciated.<br />For queries, please
-          contact <a href="tel:+260965080716">+260965080716</a>.
-        </p>
+        <div class="contact-note">
+          <p class="contact-note-copy">
+            Your presence is our greatest gift. If you wish to bless us with a
+            monetary gift, a contribution of K350 or more would be warmly
+            appreciated. You may send it via either option below to
+            <strong>Chibuta Mwaba</strong>.
+          </p>
+          <div
+            class="gift-options"
+            role="group"
+            aria-label="Mobile money gift options"
+          >
+            <div class="gift-option">
+              <div class="gift-option-details">
+                <span class="gift-option-provider">MTN</span>
+                <span class="gift-option-number">0965080716</span>
+              </div>
+              <button
+                class="gift-copy-button"
+                type="button"
+                data-copy-number="0965080716"
+                aria-label="Copy MTN Mobile Money number"
+                title="Copy MTN number"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                  <path
+                    d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <div class="gift-option">
+              <div class="gift-option-details">
+                <span class="gift-option-provider">Airtel</span>
+                <span class="gift-option-number">0971929134</span>
+              </div>
+              <button
+                class="gift-copy-button"
+                type="button"
+                data-copy-number="0971929134"
+                aria-label="Copy Airtel Money number"
+                title="Copy Airtel number"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="8" y="8" width="12" height="12" rx="2"></rect>
+                  <path
+                    d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <p
+            class="gift-copy-feedback"
+            id="giftCopyFeedback"
+            role="status"
+            aria-live="polite"
+          ></p>
+          <p class="contact-note-queries">
+            For queries, please contact
+            <a href="tel:+260764239707">+260764239707</a>.
+          </p>
+        </div>
       </section>
     </main>
     <footer class="footer">
@@ -1977,6 +2169,48 @@
     <script>
       const locationSection = document.getElementById("location");
       const metaDate = document.querySelector('meta[name="date"]');
+      const giftCopyFeedback = document.getElementById("giftCopyFeedback");
+      async function copyGiftNumber(number) {
+        if (navigator.clipboard?.writeText && window.isSecureContext) {
+          try {
+            await navigator.clipboard.writeText(number);
+            return;
+          } catch (error) {
+            console.warn(
+              "Clipboard API could not copy the gift number:",
+              error,
+            );
+          }
+        }
+        const temporaryInput = document.createElement("textarea");
+        temporaryInput.value = number;
+        temporaryInput.setAttribute("readonly", "");
+        temporaryInput.style.position = "fixed";
+        temporaryInput.style.opacity = "0";
+        document.body.append(temporaryInput);
+        temporaryInput.select();
+        let copied;
+        try {
+          copied = document.execCommand("copy");
+        } finally {
+          temporaryInput.remove();
+        }
+        if (!copied) throw new Error("The browser could not copy the number.");
+      }
+      document.querySelectorAll(".gift-copy-button").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const number = button.dataset.copyNumber;
+          try {
+            if (!number) throw new Error("The gift number is missing.");
+            await copyGiftNumber(number);
+            giftCopyFeedback.textContent = "Number copied.";
+          } catch (error) {
+            console.error("Could not copy the gift number:", error);
+            giftCopyFeedback.textContent =
+              "Could not copy automatically. Please select the number above.";
+          }
+        });
+      });
       const defaultEventDate = "2026-11-28T10:00:00";
       const countdownValue = document.getElementById("countdownValue");
       const calendarTitle = document.getElementById("calendarTitle");
